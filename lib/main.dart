@@ -1,3 +1,4 @@
+import 'package:ecom_group2/app/components/nav_component.dart';
 import 'package:ecom_group2/app/modules/home/view/home_view.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeView(),
+      home: const NavComponent(),
     );
   }
 }
