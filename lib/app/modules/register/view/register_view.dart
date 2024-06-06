@@ -2,30 +2,29 @@ import 'package:ecom_group2/app/components/Appbar_login.dart';
 import 'package:ecom_group2/app/components/buttonLogIn_Reg.dart';
 import 'package:ecom_group2/app/components/textfield_login.dart';
 import 'package:ecom_group2/app/components/thirdpartylogin.dart';
-import 'package:ecom_group2/app/modules/register/view/Register_view.dart';
+import 'package:ecom_group2/app/modules/login/view/login_view.dart';
 import 'package:flutter/material.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegisterView> createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          appBar: buildAppBar(
-            "Sign In",
+          appBar: buildAppBar("Sign Up",
             () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RegisterView()),
-              ); 
+                MaterialPageRoute(builder: (context) => LoginView()),
+              ); // Navigasi ke halaman register
             },
           ),
           body: SingleChildScrollView(
@@ -33,8 +32,8 @@ class _LoginViewState extends State<LoginView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 20),
-                TitleText("Welcome! Login to"),
-                TitleText("JB Store"),
+                TitleText("Hello! Register to get"),
+                TitleText("Started"),
                 Container(
                   margin: EdgeInsets.only(top: 36),
                   padding: EdgeInsets.only(left: 25, right: 25),
@@ -42,20 +41,18 @@ class _LoginViewState extends State<LoginView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 5),
-                      buildTextField("Enter your email", "email"),
+                      buildTextField("Username", "user"),
                       SizedBox(height: 5),
-                      buildTextField("Enter your password", "password")
+                      buildTextField("Email", "email"),
+                      SizedBox(height: 5),
+                      buildTextField("Password", "password"),
+                      SizedBox(height: 5),
+                      buildTextField("Confirm Password", "password"),
                     ],
                   ),
                 ),
-                // Row with Spacer to position forgotPassword() to the right
-                Row(
-                  children: [
-                    Spacer(),
-                    forgotPassword(),
-                  ],
-                ),
-                buildLogInAndRegButton("Log in", () {
+      
+                buildLogInAndRegButton("Register", () {
                   print("Login button");
                 }),
                 SizedBox(height: 30),
@@ -71,7 +68,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: reusableText("Or Register With"),
+                        child: reusableText("Or Login With"),
                       ),
                       Expanded(
                         child: Divider(
@@ -92,7 +89,7 @@ class _LoginViewState extends State<LoginView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don't have an account?",
+                  "Already have an account?",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF1E232C),
@@ -103,13 +100,11 @@ class _LoginViewState extends State<LoginView> {
 
                 GestureDetector(
                   onTap: () {
-                    
                     print("Navigate to Register Page");
-                    // Anda bisa menambahkan navigasi ke halaman pendaftaran di sini
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterView()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginView()));
                   },
                   child: Text(
-                    "Register Now",
+                    "Login Now",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xFF396255),
