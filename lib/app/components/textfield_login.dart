@@ -30,12 +30,12 @@ Widget reusableText(String text) {
   );
 }
 
-Widget buildTextField(String hintText, String textType) {
+Widget buildTextField(String hintText, String textType, TextEditingController controller) {
   return LayoutBuilder(
     builder: (context, constraints) {
       return Container(
-        // Lebar container menyesuaikan dengan 90% lebar parent
-        width: constraints.maxWidth * 1,
+        // Lebar container menyesuaikan dengan 100% lebar parent
+        width: constraints.maxWidth,
         height: 50,
         margin: EdgeInsets.only(bottom: 20, left: 0),
         decoration: BoxDecoration(
@@ -50,6 +50,7 @@ Widget buildTextField(String hintText, String textType) {
                 margin: EdgeInsets.only(left: 5),
                 height: 70,
                 child: TextField(
+                  controller: controller,
                   keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
                     hintText: hintText,
@@ -80,7 +81,6 @@ Widget buildTextField(String hintText, String textType) {
     },
   );
 }
-
 Widget forgotPassword() {
   return Container(
     margin: EdgeInsets.only(right: 25),

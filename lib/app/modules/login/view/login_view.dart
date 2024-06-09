@@ -1,9 +1,13 @@
+
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ecom_group2/app/components/Appbar_login.dart';
 import 'package:ecom_group2/app/components/buttonLogIn_Reg.dart';
 import 'package:ecom_group2/app/components/textfield_login.dart';
 import 'package:ecom_group2/app/components/thirdpartylogin.dart';
 import 'package:ecom_group2/app/modules/register/view/Register_view.dart';
-import 'package:flutter/material.dart';
+
+import '../../auth/login_authProvider.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -13,6 +17,9 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => RegisterView()),
-              ); 
+              );
             },
           ),
           body: SingleChildScrollView(
@@ -42,22 +49,53 @@ class _LoginViewState extends State<LoginView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 5),
-                      buildTextField("Enter your email", "email"),
+                      buildTextField("Enter your Username", "user", _usernameController),
                       SizedBox(height: 5),
-                      buildTextField("Enter your password", "password")
+                      buildTextField("Enter your password", "password", _passwordController),
                     ],
                   ),
                 ),
-                // Row with Spacer to position forgotPassword() to the right
                 Row(
                   children: [
                     Spacer(),
                     forgotPassword(),
                   ],
                 ),
-                buildLogInAndRegButton("Log in", () {
-                  print("Login button");
-                }),
+                Consumer<AuthProvider>(
+                  builder: (context, authProvider, child) {
+                    if (authProvider.isLoggedIn) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => RegisterView()),
+                          
+                        );
+                        print("Token: ${authProvider.token}");
+                      });
+                    }
+
+                    return Column(
+                      children: [
+                        buildLogInAndRegButton("Log in", () {
+                          final username = _usernameController.text;
+                          final password = _passwordController.text;
+                          authProvider.login(username, password);
+                        }),
+                        if (authProvider.errorMessage != null)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                authProvider.errorMessage!,
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ),
+                          ),
+                      ],
+                    );
+                  },
+                ),
                 SizedBox(height: 30),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -82,11 +120,11 @@ class _LoginViewState extends State<LoginView> {
                     ],
                   ),
                 ),
-                buildThirdPartyLogin(context)
+                buildThirdPartyLogin(context),
               ],
             ),
           ),
-           bottomNavigationBar: Padding(
+          bottomNavigationBar: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -100,13 +138,12 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
                 SizedBox(width: 5),
-
                 GestureDetector(
                   onTap: () {
-                    
-                    print("Navigate to Register Page");
-                    // Anda bisa menambahkan navigasi ke halaman pendaftaran di sini
-                     Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterView()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterView()),
+                    );
                   },
                   child: Text(
                     "Register Now",
