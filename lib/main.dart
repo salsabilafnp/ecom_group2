@@ -1,4 +1,4 @@
-import 'package:ecom_group2/bloc/jbstore_bloc.dart';
+import 'package:ecom_group2/app/modules/auth/controller/bloc/jbstore_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../bloc/jbstore_bloc.dart';
-import '../splash screen/splash_screen.dart';
+import 'controller/bloc/jbstore_bloc.dart';
+import 'view/splash_screen.dart';
 
 class Example extends StatelessWidget {
   const Example({super.key});
@@ -12,9 +12,9 @@ class Example extends StatelessWidget {
       body: BlocBuilder<JbstoreBloc, JbstoreState>(
         builder: (context, state) {
           if (state is JbstoreLoading) {
-            return SplashScreen();
+            return const SplashScreen();
           }
-          return Center(
+          return const Center(
             child: Text("HALAMAN LOGIN"),
           );
         },
