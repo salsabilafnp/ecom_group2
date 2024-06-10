@@ -22,13 +22,13 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               "JB STORE",
               style: GoogleFonts.irishGrover(fontSize: 40, color: Colors.white),
-            ).animate().fade(delay: Duration(microseconds: 1700)),
+            ).animate().fade(delay: const Duration(milliseconds: 500)),
             const SizedBox(
               height: 20,
             ),
             LottieBuilder.asset(
               "assets/animation-screen.json",
-              width: 250,
+              width: 270,
             )
           ],
         ),

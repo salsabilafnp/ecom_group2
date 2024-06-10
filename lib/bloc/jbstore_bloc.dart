@@ -8,7 +8,7 @@ class JbstoreBloc extends Bloc<JbstoreEvent, JbstoreState> {
   JbstoreBloc() : super(JbstoreInitial()) {
     on<OnJbstoreCalled>((event, emit) async {
       emit(JbstoreLoading());
-      await Future.delayed(Duration(seconds: 6));
+      await Future.delayed(const Duration(seconds: 6));
       emit(JbstoreLoaded());
     });
   }
