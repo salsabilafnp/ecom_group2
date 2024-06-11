@@ -30,14 +30,14 @@ class _DaftarProdukViewState extends State<DaftarProdukView> {
         ),
       ),
       bottomNavigationBar: BottomNavComponent(
-        currentIndex: 0, // Set sesuai dengan tab yang aktif
+        currentIndex: 0,
         onTabTapped: (index) {
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => NavComponent(), // Pass the updated index
+              builder: (context) => NavComponent(),
             ),
-            (route) => false, // Remove all previous routes
+            (route) => false,
           );
         },
       ),
