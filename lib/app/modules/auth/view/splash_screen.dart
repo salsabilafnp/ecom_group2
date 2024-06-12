@@ -13,24 +13,27 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color.fromRGBO(18, 50, 123, 1),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "JB STORE",
-              style: GoogleFonts.irishGrover(fontSize: 40, color: Colors.white),
-            ).animate().fade(delay: const Duration(milliseconds: 500)),
-            const SizedBox(
-              height: 20,
-            ),
-            LottieBuilder.asset(
-              "assets/animation-screen.json",
-              width: 270,
-            )
-          ],
+    return Scaffold(
+      body: Container(
+        color: const Color.fromRGBO(18, 50, 123, 1),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "JB STORE",
+                style:
+                    GoogleFonts.irishGrover(fontSize: 40, color: Colors.white),
+              ).animate().fade(delay: const Duration(milliseconds: 500)),
+              const SizedBox(
+                height: 20,
+              ),
+              LottieBuilder.asset(
+                "assets/animation-screen.json",
+                width: 270,
+              )
+            ],
+          ),
         ),
       ),
     );
