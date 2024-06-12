@@ -1,4 +1,5 @@
 
+import 'package:ecom_group2/app/modules/PageView/Page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecom_group2/app/components/Appbar_login.dart';
@@ -31,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
             () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RegisterView()),
+                MaterialPageRoute(builder: (context) => Welcome()),
               );
             },
           ),

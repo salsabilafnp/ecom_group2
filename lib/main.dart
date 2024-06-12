@@ -1,3 +1,4 @@
+import 'package:ecom_group2/app/modules/PageView/Page_view.dart';
 import 'package:ecom_group2/app/modules/auth/login_authProvider.dart';
 import 'package:ecom_group2/app/modules/login/view/login_view.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AuthProvider()),
       ],
       child: MaterialApp(
-        home: LoginView(),
+        home: Welcome(),
       ),
     );
   }
