@@ -74,16 +74,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         radius: 90,
                         backgroundImage: AssetImage('assets/human.jpeg'), // Replace with actual image
                       ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: IconButton(
-                          icon: Icon(Icons.edit),
-                          onPressed: () {
-                            // Handle edit button press
-                          },
-                        ),
-                      ),
+                     
                     ],
                   ),
                 ),
