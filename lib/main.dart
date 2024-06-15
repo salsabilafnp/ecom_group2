@@ -1,4 +1,5 @@
 import 'package:ecom_group2/app/components/nav_component.dart';
+import 'package:ecom_group2/app/modules/history_transaksi/view/history_transaksi_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const NavComponent(),
+      home: const HistoryTransaksiView(),
     );
   }
 }
