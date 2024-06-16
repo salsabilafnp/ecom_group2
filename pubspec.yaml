@@ -36,7 +36,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   image_picker: ^0.8.5+3
-  http: ^0.13.3
+  font_awesome_flutter: ^10.7.0
+  carousel_slider: ^4.2.1
+  http: ^1.2.1
+  flutter_countdown_timer: ^4.1.0
 
 dev_dependencies:
   flutter_test:
