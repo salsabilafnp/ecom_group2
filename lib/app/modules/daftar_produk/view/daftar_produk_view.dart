@@ -1,6 +1,5 @@
 import 'package:ecom_group2/app/components/bottom_nav_component.dart';
 import 'package:ecom_group2/app/components/nav_component.dart';
-import 'package:ecom_group2/app/model/product.dart';
 import 'package:ecom_group2/app/modules/daftar_produk/controller/daftar_produk_controller.dart';
 import 'package:flutter/material.dart';
 
