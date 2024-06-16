@@ -1,5 +1,7 @@
 import 'package:ecom_group2/app/components/nav_component.dart';
 import 'package:flutter/material.dart';
+import 'package:ecom_group2/app/modules/profile/profile.dart';
+// import 'package:ecom_group2/app/modules/profile/profile.dart';
 
 void main() {
   runApp(const MyApp());
