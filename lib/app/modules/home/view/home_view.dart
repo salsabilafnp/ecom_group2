@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecom_group2/app/modules/daftar_produk/view/daftar_produk_view.dart';
 import 'package:ecom_group2/app/modules/home/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeView extends StatefulWidget {
   final HomeController? controller;
@@ -49,13 +51,10 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  void changeCategory(String category) {
-    setState(() {
-      selectedCategory = category;
-      _controller.fetchProducts(selectedCategory).then((_) {
-        setState(() {});
-      });
-    });
+  Future<void> changeCategory(String category) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString("category", category);
+    print(category);
   }
 
   Column flashSale() {
@@ -381,7 +380,13 @@ class _HomeViewState extends State<HomeView> {
       runSpacing: 8.0,
       children: [
         GestureDetector(
-          onTap: () => changeCategory('all'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DaftarProdukView()),
+            );
+            changeCategory("All");
+          },
           child: const Column(
             children: [
               Icon(Icons.grid_view),
@@ -396,7 +401,13 @@ class _HomeViewState extends State<HomeView> {
           width: 10,
         ),
         GestureDetector(
-          onTap: () => changeCategory('jewelery'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DaftarProdukView()),
+            );
+            changeCategory("Jewelery");
+          },
           child: const Column(
             children: [
               FaIcon(FontAwesomeIcons.ring),
@@ -411,7 +422,13 @@ class _HomeViewState extends State<HomeView> {
           width: 10,
         ),
         GestureDetector(
-          onTap: () => changeCategory('electronics'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DaftarProdukView()),
+            );
+            changeCategory("Electronics");
+          },
           child: const Column(
             children: [
               Icon(Icons.monitor),
@@ -426,7 +443,13 @@ class _HomeViewState extends State<HomeView> {
           width: 10,
         ),
         GestureDetector(
-          onTap: () => changeCategory("men's clothing"),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DaftarProdukView()),
+            );
+            changeCategory("Men's clothing");
+          },
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -453,7 +476,13 @@ class _HomeViewState extends State<HomeView> {
           width: 10,
         ),
         GestureDetector(
-          onTap: () => changeCategory("women's clothing"),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DaftarProdukView()),
+            );
+            changeCategory("Women's clothing");
+          },
           child: Column(
             children: [
               Container(
