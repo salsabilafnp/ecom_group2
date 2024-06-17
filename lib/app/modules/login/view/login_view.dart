@@ -1,4 +1,4 @@
-
+import 'package:ecom_group2/app/components/nav_component.dart';
 import 'package:ecom_group2/app/modules/PageView/Page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +7,7 @@ import 'package:ecom_group2/app/components/buttonLogIn_Reg.dart';
 import 'package:ecom_group2/app/components/textfield_login.dart';
 import 'package:ecom_group2/app/components/thirdpartylogin.dart';
 import 'package:ecom_group2/app/modules/register/view/Register_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../auth/login_authProvider.dart';
 
@@ -20,6 +21,11 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  Future<void> isLogin(bool login) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool("isLogin", login);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +56,11 @@ class _LoginViewState extends State<LoginView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 5),
-                      buildTextField("Enter your Username", "user", _usernameController),
+                      buildTextField(
+                          "Enter your Username", "user", _usernameController),
                       SizedBox(height: 5),
-                      buildTextField("Enter your password", "password", _passwordController),
+                      buildTextField("Enter your password", "password",
+                          _passwordController),
                     ],
                   ),
                 ),
@@ -68,9 +76,10 @@ class _LoginViewState extends State<LoginView> {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => RegisterView()),
-                          
+                          MaterialPageRoute(
+                              builder: (context) => NavComponent()),
                         );
+                        isLogin(true);
                         print("Token: ${authProvider.token}");
                       });
                     }
@@ -84,7 +93,8 @@ class _LoginViewState extends State<LoginView> {
                         }),
                         if (authProvider.errorMessage != null)
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 25.0),
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
