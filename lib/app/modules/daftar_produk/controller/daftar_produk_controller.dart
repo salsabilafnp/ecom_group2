@@ -39,4 +39,19 @@ class DaftarProdukController {
       isLoading = false;
     }
   }
+
+  Future<Product> fetchProductDetail(int productId) async {
+    String url = 'https://fakestoreapi.com/products/$productId';
+
+    try {
+      final response = await http.get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        return Product.fromJson(jsonDecode(response.body));
+      } else {
+        throw Exception('Failed to load product details');
+      }
+    } catch (e) {
+      throw Exception('Failed to load product details: $e');
+    }
+  }
 }

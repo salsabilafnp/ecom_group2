@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecom_group2/app/components/product_card.dart';
 import 'package:ecom_group2/app/modules/daftar_produk/view/daftar_produk_view.dart';
 import 'package:ecom_group2/app/modules/home/controller/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -117,99 +118,25 @@ class _HomeViewState extends State<HomeView> {
                   items: _controller.products.map((item) {
                     return Builder(
                       builder: (BuildContext context) {
-                        return Card(
-                          color: const Color.fromARGB(255, 190, 190, 190),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          elevation: 5,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: <Widget>[
-                                Stack(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(15.0),
-                                        topRight: Radius.circular(15.0),
-                                      ),
-                                      child: Image.network(
-                                        item.image,
-                                        fit: BoxFit.fitHeight,
-                                        width: double.infinity,
-                                        height: 150,
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          _controller.isFavorite =
-                                              !_controller.isFavorite;
-                                        });
-                                      },
-                                      child: Align(
-                                        alignment: Alignment.topRight,
-                                        child: Icon(
-                                          _controller.isFavorite
-                                              ? Icons.favorite
-                                              : Icons.favorite_outline,
-                                          size: 17,
-                                          color: _controller.isFavorite
-                                              ? Colors.red
-                                              : null,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 8.0),
-                                        child: Text(
-                                          item.title,
-                                          style: const TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ),
-                                    const Text(
-                                      "4.7",
-                                      style: TextStyle(fontSize: 13),
-                                    ),
-                                    const Icon(
-                                      Icons.star,
-                                      size: 13,
-                                      color: Color(0xffFFFF00),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("\$${item.price}"),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.shopping_cart_outlined,
-                                          size: 16,
-                                        ))
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
+                        return ProductCard(
+                          productId: item.id,
+                          imageUrl: item.image,
+                          title: item.title,
+                          rating: item.rating.rate,
+                          price: item.price,
+                          isFavorite: _controller.isFavorite,
+                          onFavoriteToggle: () {
+                            setState(() {
+                              _controller.isFavorite = !_controller.isFavorite;
+                            });
+                          },
+                          onCardTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/detail-produk',
+                              arguments: item.id,
+                            );
+                          },
                         );
                       },
                     );

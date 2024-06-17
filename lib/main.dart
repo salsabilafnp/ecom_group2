@@ -1,5 +1,6 @@
-import 'package:ecom_group2/app/modules/PageView/Page_view.dart';
+import 'package:ecom_group2/app/components/nav_component.dart';
 import 'package:ecom_group2/app/modules/auth/login_authProvider.dart';
+import 'package:ecom_group2/app/modules/daftar_produk/view/detail_produk.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,8 +15,14 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
       ],
-      child: const MaterialApp(
-        home: Welcome(),
+      child: MaterialApp(
+        title: "JB Store App",
+        home: const NavComponent(),
+        routes: {
+          '/detail-produk': (ctx) => DetailProductView(
+                productId: ModalRoute.of(ctx)?.settings.arguments as int,
+              ),
+        },
       ),
     );
   }
