@@ -1,7 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecom_group2/app/modules/login/view/login_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -64,7 +63,8 @@ class _WelcomeState extends State<Welcome> {
                   ],
                 ),
                 Positioned(
-                  top: screenHeight * 0.53, // Mengatur posisi indicator di atas bagian _page
+                  top: screenHeight *
+                      0.53, // Mengatur posisi indicator di atas bagian _page
                   child: DotsIndicator(
                     position: _currentPage,
                     dotsCount: 3,
@@ -109,9 +109,7 @@ class _WelcomeState extends State<Welcome> {
           child: Text(
             title,
             style: TextStyle(
-                color: Colors.black,
-                fontSize: 30,
-                fontWeight: FontWeight.bold),
+                color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),
         SizedBox(height: 15),
@@ -137,11 +135,10 @@ class _WelcomeState extends State<Welcome> {
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.easeIn);
             } else {
-              
-             Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginView()),
-                    );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginView()),
+              );
             }
           },
           child: Container(
