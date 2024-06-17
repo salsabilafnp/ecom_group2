@@ -188,6 +188,7 @@ class _DaftarProdukViewState extends State<DaftarProdukView> {
                       FutureBuilder<String>(
                         future: _controller.getData(),
                         builder: (context, snapshot) {
+                          print(snapshot.data);
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
                             return const CircularProgressIndicator(); // Show loading indicator while data is being fetched
