@@ -1,3 +1,4 @@
+import 'package:ecom_group2/app/components/custom_appbar.dart';
 import 'package:ecom_group2/app/modules/profile/view/edit_profile.dart';
 import 'package:flutter/material.dart';
 
@@ -7,14 +8,9 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.settings),
-          ),
-        ],
+      appBar: const CustomAppbar(
+        title: 'Profile',
+        appBarType: AppBarType.profile,
       ),
       body: SingleChildScrollView(
         child: Padding(

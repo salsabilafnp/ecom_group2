@@ -1,5 +1,8 @@
+import 'package:ecom_group2/app/components/custom_appbar.dart';
 import 'package:ecom_group2/app/model/product.dart';
+import 'package:ecom_group2/app/modules/cart/controller/cart_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../controller/daftar_produk_controller.dart';
 
@@ -26,29 +29,14 @@ class _DetailProductViewState extends State<DetailProductView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detail Product'),
-        centerTitle: true,
-        actions: [
-          // Favorite Button
-          IconButton(
-            icon: Icon(
-              _controller.isFavorite ? Icons.favorite : Icons.favorite_outline,
-              color: _controller.isFavorite ? Colors.red : null,
-            ),
-            onPressed: () {
-              setState(() {
-                _controller.isFavorite = !_controller.isFavorite;
-              });
-            },
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.shopping_cart_outlined,
-            ),
-            onPressed: () {},
-          ),
-        ],
+      appBar: CustomAppbar(
+        title: 'Detail Product',
+        appBarType: AppBarType.detailProduct,
+        onFavoritePressed: () {
+          setState(() {
+            _controller.isFavorite = !_controller.isFavorite;
+          });
+        },
       ),
       body: FutureBuilder<Product>(
         future: _futureProduct,
@@ -147,6 +135,14 @@ class _DetailProductViewState extends State<DetailProductView> {
                       ElevatedButton.icon(
                         onPressed: () {
                           // Logic to add product to cart
+                          final cartController = Provider.of<CartController>(
+                              context,
+                              listen: false);
+                          cartController.addToCart(product.id, product);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Product added to cart')),
+                          );
                         },
                         label: const Text('Add to Cart'),
                         icon: const Icon(
