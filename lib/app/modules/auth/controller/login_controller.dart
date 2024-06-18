@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:ecom_group2/app/modules/login/model/login_model.dart';
+import 'package:ecom_group2/app/model/login_model.dart';
 import 'package:http/http.dart' as http;
 
 

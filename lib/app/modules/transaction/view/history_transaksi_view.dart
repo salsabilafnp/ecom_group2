@@ -1,5 +1,5 @@
 import 'package:ecom_group2/app/components/custom_appbar.dart';
-import 'package:ecom_group2/app/modules/history_transaksi/controller/history_transaksi_controller.dart';
+import 'package:ecom_group2/app/modules/transaction/controller/history_transaksi_controller.dart';
 import 'package:flutter/material.dart';
 
 class HistoryTransaksiView extends StatefulWidget {
