@@ -1,15 +1,15 @@
-import 'package:ecom_group2/app/components/nav_component.dart';
-import 'package:ecom_group2/app/modules/PageView/page_view.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:ecom_group2/app/components/Appbar_login.dart';
 import 'package:ecom_group2/app/components/buttonLogIn_Reg.dart';
+import 'package:ecom_group2/app/components/nav_component.dart';
 import 'package:ecom_group2/app/components/textfield_login.dart';
 import 'package:ecom_group2/app/components/thirdpartylogin.dart';
-import 'package:ecom_group2/app/modules/register/view/Register_view.dart';
+import 'package:ecom_group2/app/modules/auth/view/Page_view.dart';
+import 'package:ecom_group2/app/modules/auth/view/register_view.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../auth/login_authProvider.dart';
+import '../login_authProvider.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

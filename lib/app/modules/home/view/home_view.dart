@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecom_group2/app/components/product_card.dart';
-import 'package:ecom_group2/app/modules/daftar_produk/view/daftar_produk_view.dart';
+import 'package:ecom_group2/app/modules/product/view/daftar_produk_view.dart';
 import 'package:ecom_group2/app/modules/home/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';

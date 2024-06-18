@@ -1,6 +1,6 @@
-import 'package:ecom_group2/app/modules/login/controller/login_controller.dart';
+import 'package:ecom_group2/app/modules/auth/controller/login_controller.dart';
 import 'package:flutter/material.dart';
-import '../login/model/login_model.dart';
+import '../../model/login_model.dart';
 
 
 class AuthProvider with ChangeNotifier {
