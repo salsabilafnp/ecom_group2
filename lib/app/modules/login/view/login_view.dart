@@ -1,5 +1,6 @@
 
 import 'package:ecom_group2/app/modules/PageView/Page_view.dart';
+import 'package:ecom_group2/app/modules/daftar_produk/view/daftar_produk_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecom_group2/app/components/Appbar_login.dart';
@@ -68,7 +69,7 @@ class _LoginViewState extends State<LoginView> {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => RegisterView()),
+                          MaterialPageRoute(builder: (context) => DaftarProdukView()),
                           
                         );
                         print("Token: ${authProvider.token}");
