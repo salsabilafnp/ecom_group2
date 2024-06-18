@@ -89,15 +89,16 @@ class _WelcomeState extends State<Welcome> {
   }
 
   Widget _page(int index, BuildContext context, String buttonName, String title,
-      String subtitle, String imagePath) {
+    String subtitle, String imagePath) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    
 
     return Column(
       children: [
         SizedBox(
-          width: screenWidth * 1,
-          height: screenWidth * 1,
+          width:screenWidth >= 450 ? screenWidth * 1 : screenWidth * 0.85,
+          height: screenHeight >= 900 ? screenHeight * 0.48 : screenHeight * 0.42,
           child: Image.asset(
             imagePath,
             fit: BoxFit.cover,
@@ -105,7 +106,7 @@ class _WelcomeState extends State<Welcome> {
         ),
         SizedBox(height: screenHeight * 0.15),
         Container(
-          //padding: EdgeInsets.symmetric(vertical: 50.0),
+          
           child: Text(
             title,
             style: TextStyle(
