@@ -74,10 +74,11 @@ class _LoginViewState extends State<LoginView> {
                   builder: (context, authProvider, child) {
                     if (authProvider.isLoggedIn) {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
-                        Navigator.pushReplacement(
+                        Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => NavComponent()),
+                              builder: (context) => const NavComponent()),
+                          (route) => false,
                         );
                         isLogin(true);
                         print("Token: ${authProvider.token}");

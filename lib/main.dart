@@ -1,6 +1,6 @@
-import 'package:ecom_group2/app/components/nav_component.dart';
 import 'package:ecom_group2/app/modules/auth/controller/bloc/jbstore_bloc.dart';
 import 'package:ecom_group2/app/modules/auth/login_authProvider.dart';
+import 'package:ecom_group2/app/modules/auth/view/Page_view.dart';
 import 'package:ecom_group2/app/modules/cart/controller/cart_controller.dart';
 import 'package:ecom_group2/app/modules/cart/views/cart_view.dart';
 import 'package:ecom_group2/app/modules/product/view/detail_produk.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(useMaterial3: true),
-          home: const NavComponent(),
+          home: const Welcome(),
           routes: {
             '/detail-produk': (ctx) => DetailProductView(
                   productId: ModalRoute.of(ctx)?.settings.arguments as int,
