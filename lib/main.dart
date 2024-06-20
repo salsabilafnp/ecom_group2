@@ -1,6 +1,10 @@
-import 'package:ecom_group2/app/modules/PageView/Page_view.dart';
 import 'package:ecom_group2/app/modules/auth/controller/bloc/jbstore_bloc.dart';
 import 'package:ecom_group2/app/modules/auth/login_authProvider.dart';
+import 'package:ecom_group2/app/modules/auth/view/Page_view.dart';
+import 'package:ecom_group2/app/modules/cart/controller/cart_controller.dart';
+import 'package:ecom_group2/app/modules/cart/views/cart_view.dart';
+import 'package:ecom_group2/app/modules/product/view/detail_produk.dart';
+import 'package:ecom_group2/app/modules/profile/view/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +22,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => CartController()),
       ],
       child: BlocProvider(
         create: (context) => JbstoreBloc()..add(OnJbstoreCalled()),
@@ -25,6 +30,13 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(useMaterial3: true),
           home: const Welcome(),
+          routes: {
+            '/detail-produk': (ctx) => DetailProductView(
+                  productId: ModalRoute.of(ctx)?.settings.arguments as int,
+                ),
+            '/cart': (ctx) => const CartView(),
+            '/setting': (ctx) => const SettingsPage(),
+          },
         ),
       ),
     );

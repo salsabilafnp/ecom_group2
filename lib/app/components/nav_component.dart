@@ -1,8 +1,9 @@
 import 'package:ecom_group2/app/components/bottom_nav_component.dart';
-import 'package:flutter/material.dart';
 import 'package:ecom_group2/app/modules/favorite/view/favorite_view.dart';
+import 'package:ecom_group2/app/modules/transaction/view/history_transaksi_view.dart';
 import 'package:ecom_group2/app/modules/home/view/home_view.dart';
 import 'package:ecom_group2/app/modules/profile/view/profile_view.dart';
+import 'package:flutter/material.dart';
 
 class NavComponent extends StatefulWidget {
   const NavComponent({super.key});
@@ -28,6 +29,7 @@ class _NavComponentState extends State<NavComponent> {
         children: const [
           HomeView(),
           FavoriteView(),
+          HistoryTransaksiView(),
           ProfileView(),
         ],
       ),

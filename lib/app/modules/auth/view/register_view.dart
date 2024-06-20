@@ -2,8 +2,8 @@ import 'package:ecom_group2/app/components/Appbar_login.dart';
 import 'package:ecom_group2/app/components/buttonLogIn_Reg.dart';
 import 'package:ecom_group2/app/components/textfield_login.dart';
 import 'package:ecom_group2/app/components/thirdpartylogin.dart';
-import 'package:ecom_group2/app/modules/login/view/login_view.dart';
-import 'package:ecom_group2/app/modules/register/controller/register_controller.dart';
+import 'package:ecom_group2/app/modules/auth/controller/register_controller.dart';
+import 'package:ecom_group2/app/modules/auth/view/login_view.dart';
 import 'package:flutter/material.dart';
 
 class RegisterView extends StatefulWidget {

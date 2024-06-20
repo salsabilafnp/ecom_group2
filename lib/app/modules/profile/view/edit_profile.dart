@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:ecom_group2/app/modules/profile/model.dart';
+import 'package:ecom_group2/app/model/user.dart';
 
 class EditProfileScreen extends StatefulWidget {
   @override

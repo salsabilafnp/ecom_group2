@@ -1,3 +1,4 @@
+import 'package:ecom_group2/app/components/custom_appbar.dart';
 import 'package:ecom_group2/app/modules/favorite/view/all_product.dart';
 import 'package:flutter/material.dart';
 
@@ -14,20 +15,9 @@ class _FavoriteViewState extends State<FavoriteView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Favorite"),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined),
-            iconSize: 25,
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.shopping_cart_outlined),
-            iconSize: 25,
-            onPressed: () {},
-          )
-        ],
+      appBar: const CustomAppbar(
+        title: 'Favorites',
+        appBarType: AppBarType.favorite,
       ),
       body: ListView(
         children: [

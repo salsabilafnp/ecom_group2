@@ -1,4 +1,5 @@
-import 'package:ecom_group2/app/modules/history_transaksi/controller/history_transaksi_controller.dart';
+import 'package:ecom_group2/app/components/custom_appbar.dart';
+import 'package:ecom_group2/app/modules/transaction/controller/history_transaksi_controller.dart';
 import 'package:flutter/material.dart';
 
 class HistoryTransaksiView extends StatefulWidget {
@@ -28,12 +29,16 @@ class _HistoryTransaksiViewState extends State<HistoryTransaksiView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppbar(
+        title: 'Transaction History',
+        appBarType: AppBarType.transaction,
+        onFavoritePressed: () {},
+      ),
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: SafeArea(
           child: Column(
             children: [
-              title(context),
               Container(
                 padding: const EdgeInsets.all(6),
                 decoration: const BoxDecoration(color: Color(0xffD9D9D9)),
@@ -343,42 +348,5 @@ class _HistoryTransaksiViewState extends State<HistoryTransaksiView> {
             padding: const EdgeInsets.all(10),
             child: const Text("Tidak Ada Produk"));
     }
-  }
-
-  Padding title(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.chevron_left),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Text("History Pesanan")
-                    ],
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.notifications_outlined),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.shopping_cart_outlined),
-                ),
-              ],
-            ),
-          ],
-        ));
   }
 }
