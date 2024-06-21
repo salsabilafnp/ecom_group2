@@ -1,5 +1,6 @@
 import 'package:ecom_group2/app/components/custom_appbar.dart';
 import 'package:ecom_group2/app/modules/cart/controller/cart_controller.dart';
+import 'package:ecom_group2/app/modules/checkout/view/checkout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -122,6 +123,8 @@ class _CartViewState extends State<CartView> {
         child: ElevatedButton.icon(
           onPressed: () {
             // Logic to proceed to checkout
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CheckoutView()));
           },
           label: const Text('Proceed to Checkout'),
           icon: const Icon(
