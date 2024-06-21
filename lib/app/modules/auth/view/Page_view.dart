@@ -1,6 +1,10 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecom_group2/app/modules/auth/view/login_view.dart';
+import 'package:ecom_group2/app/modules/auth/view/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../controller/bloc/jbstore_bloc.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -22,67 +26,77 @@ class _WelcomeState extends State<Welcome> {
       //color: Color(0xFF12327B),
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Container(
-            width: screenWidth,
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                PageView(
-                  controller: pageController,
-                  onPageChanged: (index) {
-                    setState(() {
-                      _currentPage = index; // Perbarui halaman saat ini
-                    });
-                  },
-                  children: [
-                    _page(
-                      1,
-                      context,
-                      "Next",
-                      "Welcome to JB Store",
-                      "Find all your needs from clothing, electronics and other items at the JB store",
-                      "assets/icon/ob1.png",
-                    ),
-                    _page(
-                      2,
-                      context,
-                      "Next",
-                      "Welcome to JB Store",
-                      "Find all your needs from clothing, electronics and other items at the JB store",
-                      "assets/icon/ob2.png",
-                    ),
-                    _page(
-                      3,
-                      context,
-                      "Get started",
-                      "Welcome to JB Store",
-                      "Find all your needs from clothing, electronics and other items at the JB store",
-                      "assets/icon/ob3.png",
-                    ),
-                  ],
-                ),
-                Positioned(
-                  top: screenHeight *
-                      0.53, // Mengatur posisi indicator di atas bagian _page
-                  child: DotsIndicator(
-                    position: _currentPage,
-                    dotsCount: 3,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    decorator: DotsDecorator(
-                      color: Color(0xFF12327B).withOpacity(0.3),
-                      activeSize: const Size(30.0, 8.0),
-                      size: const Size.square(8.0),
-                      activeColor: Color(0xFF12327B),
-                      activeShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
+        body: BlocBuilder<JbstoreBloc, JbstoreState>(
+          builder: (context, state) {
+            if (state is JbstoreLoading) {
+              return SplashScreen();
+            } else if (state is JbstoreLoaded) {
+              return SafeArea(
+                child: Container(
+                  width: screenWidth,
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      PageView(
+                        controller: pageController,
+                        onPageChanged: (index) {
+                          setState(() {
+                            _currentPage = index; // Perbarui halaman saat ini
+                          });
+                        },
+                        children: [
+                          _page(
+                            1,
+                            context,
+                            "Next",
+                            "Welcome to JB Store",
+                            "Find all your needs from clothing, electronics and other items at the JB store",
+                            "assets/icon/ob1.png",
+                          ),
+                          _page(
+                            2,
+                            context,
+                            "Next",
+                            "Welcome to JB Store",
+                            "Find all your needs from clothing, electronics and other items at the JB store",
+                            "assets/icon/ob2.png",
+                          ),
+                          _page(
+                            3,
+                            context,
+                            "Get started",
+                            "Welcome to JB Store",
+                            "Find all your needs from clothing, electronics and other items at the JB store",
+                            "assets/icon/ob3.png",
+                          ),
+                        ],
                       ),
-                    ),
+                      Positioned(
+                        top: screenHeight *
+                            0.53, // Mengatur posisi indicator di atas bagian _page
+                        child: DotsIndicator(
+                          position: _currentPage,
+                          dotsCount: 3,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          decorator: DotsDecorator(
+                            color: Color(0xFF12327B).withOpacity(0.3),
+                            activeSize: const Size(30.0, 8.0),
+                            size: const Size.square(8.0),
+                            activeColor: Color(0xFF12327B),
+                            activeShape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
+              );
+            } else {
+              return Container();
+            }
+          },
         ),
       ),
     );
